@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Sync k8s.gcr.io/metrics-server/metrics-server
 
 # Controls when the workflow will run
 on:
@@ -34,8 +34,6 @@ jobs:
         run: |
           wget https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz
           tar -zxvf image-syncer-v1.3.1-linux-amd64.tar.gz
-          pwd
-          ls -la
 
       - name: Gen auth.json
         env:
@@ -48,3 +46,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           ./image-syncer -h
+          ./image-syncer --proc=9 --auth=./auth.json --images=./images-metrics-server.json --namespace=cnplat --retries=3
