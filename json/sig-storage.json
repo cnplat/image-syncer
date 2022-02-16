@@ -1,0 +1,7 @@
+{
+    "k8s.gcr.io/sig-storage/csi-provisioner": "cnplat/csi-provisioner",
+    "k8s.gcr.io/sig-storage/csi-node-driver-registrar": "cnplat/csi-node-driver-registrar",
+    "k8s.gcr.io/sig-storage/csi-resizer": "cnplat/csi-resizer",
+    "k8s.gcr.io/sig-storage/csi-snapshotter": "cnplat/csi-snapshotter",
+    "k8s.gcr.io/sig-storage/csi-attacher": "cnplat/csi-attacher"
+}
