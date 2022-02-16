@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Sync k8s.gcr.io/kube-*
+name: Sync k8s.gcr.io/kube-proxy
 
 # Controls when the workflow will run
 on:
@@ -37,9 +37,10 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo {\"registry.hub.docker.com\": {\"username\": \"cnplat\", \"password\": \"$DOCKER_PASSWORD\" } } >  auth.json
+          echo {\"k8s.gcr.io/kube-proxy\": \"cnplat/kube-proxy\" } >  images-kube-proxy.json
 
       - name: Run image-syncer
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          ./image-syncer --proc=16 --auth=./auth.json --images=./json/kubenetes.json --namespace=cnplat
+          ./image-syncer --proc=9 --auth=./auth.json --images=./images-kube-proxy.json --namespace=cnplat
