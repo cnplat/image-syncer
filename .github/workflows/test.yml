@@ -30,7 +30,6 @@ jobs:
         with:
           go-version: 1.17
 
-      # Runs a single command using the runners shell
       - name: Install image-syncer
         run: |
           wget https://github.com/AliyunContainerService/image-syncer/releases/download/v1.3.1/image-syncer-v1.3.1-linux-amd64.tar.gz
@@ -38,8 +37,10 @@ jobs:
           pwd
           ls -la
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Gen auth.json
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo  "$DOCKER_PASSWORD"
+          echo {\"registry.hub.docker.com\": {\"username\": \"cnplat\", \"password\": "$DOCKER_PASSWORD" } } >  auth.json
+          cat auth.json
