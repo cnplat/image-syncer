@@ -46,4 +46,6 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           ls -la
+          cat auth.json
+          cat images-metrics-server.json
           ./image-syncer --proc=6 --auth=./auth.json --images=./images-metrics-server.json --namespace=cnplat
