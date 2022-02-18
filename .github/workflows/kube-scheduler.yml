@@ -41,7 +41,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo {\"registry.hub.docker.com\": {\"username\": \"cnplat\", \"password\": \"$DOCKER_PASSWORD\" } } >  auth.json
-          echo {\"k8s.gcr.io/kube-scheduler\": \"cnplat/kube-scheduler\" } >  images-kube-scheduler.json
+          echo {\"k8s.gcr.io/kube-scheduler:v1.21.10,v1.22.7,v1.23.4\": \"cnplat/kube-scheduler\" } >  images-kube-scheduler.json
 
       - name: Run image-syncer
         env:
