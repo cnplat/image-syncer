@@ -41,7 +41,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo {\"registry.hub.docker.com\": {\"username\": \"cnplat\", \"password\": \"$DOCKER_PASSWORD\" } } >  auth.json
-          echo {\"k8s.gcr.io/etcd:3.5.2\": \"cnplat/etcd\" } >  images-etcd.json
+          echo {\"k8s.gcr.io/etcd\": \"cnplat/etcd\" } >  images-etcd.json
 
       - name: Run image-syncer
         env:
