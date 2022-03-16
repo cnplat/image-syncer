@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Sync k8s.gcr.io/kube-state-metrics/kube-state-metrics:v2.4.2
+name: Sync k8s.gcr.io/kube-state-metrics/kube-state-metrics
 
 # Controls when the workflow will run
 on:
